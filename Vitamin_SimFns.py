@@ -344,8 +344,9 @@ def labelpref(type_pref):
     shp_labs = ['cat', 'lion', 'hippo', 'elephant']
     type_lst = list(string.ascii_lowercase)[0:len(col_labs)] + [str(x) for x in range(0,len(shp_labs))]
     lab_list = col_labs + shp_labs
+    child_list = list(string.ascii_uppercase)[0:len(type_pref)]
     for i,t in enumerate(type_pref):
-        label_pref.append('child ' + str(i) +': ' + lab_list[find(type_lst, t)[0]])
+        label_pref.append('Child ' + child_list[i] +': ' + lab_list[find(type_lst, t)[0]])
     return label_pref
 
 # Generate a plot of cumulative count of temper tantrums ("fits") per child
@@ -353,10 +354,10 @@ def plot_fitcount(fit_avg, type_pref):
     # plot cumulative count count of temper tantrums    
     plt.plot(fit_avg, marker='.', markersize=10)
     lab_pref = labelpref(type_pref) 
-    lab_pref.extend(['Parent days ruined'])
+    lab_pref.extend(['Parent'])
     plt.legend(lab_pref, loc=2)
     plt.xlabel('Day', fontsize=20)
-    plt.ylabel('Cumulative count of bad days', fontsize=15)
+    plt.ylabel('Cumulative count of bad days', fontsize=20)
     plt.ylim([0,35])
 
 # Function to generate a plot of fit probability per child
